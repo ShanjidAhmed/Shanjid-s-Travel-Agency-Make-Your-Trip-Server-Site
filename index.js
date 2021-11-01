@@ -31,25 +31,25 @@ async function run() {
 
 
         // GET API
-        app.get('http://localhost:5000/services', async (req, res) => {
+        app.get('/services', async (req, res) => {
             const cursor = placeCollection.find({});
             const services = await cursor.toArray();
             res.send(services);
         });
 
-        app.get('http://localhost:5000/membership', async (req, res) => {
+        app.get('/membership', async (req, res) => {
             const cursor = membershipInfoCollection.find({});
             const membershipResults = await cursor.toArray();
             res.send(membershipResults);
         });
 
-        app.get("http://localhost:5000/usersorders", async (req, res) => {
+        app.get("/usersorders", async (req, res) => {
             const cursor = userOrders.find({})
             const userInfo = await cursor.toArray();
             res.send(userInfo)
         })
         // GET Single Service
-        app.get('http://localhost:5000/services/:id', async (req, res) => {
+        app.get('/services/:id', async (req, res) => {
             const id = req.params.id;
             console.log('getting specific service', id);
             const query = { _id: ObjectId(id) };
